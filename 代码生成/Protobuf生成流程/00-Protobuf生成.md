@@ -42,24 +42,38 @@ aggo proto [-p plugin] [-m model] [-e proto_path] <file>
 
 ## aggo proto 命令
 
+`aggo proto` 是一个 **protoc 包装器**，统一管理 7 个 protoc 插件完成从 `.proto` 到全套微服务代码的自动化生成。
+
+调用流程：
+
+```
+aggo proto -p <plugins> -m <model> -e <proto-path> <idl-file-or-dir>
+    │
+    ├── initProtos()     → 查找 proto 文件（递归目录）
+    ├── initPlugins()    → 解析 -p 参数
+    ├── initModels()     → 解析 -m 参数
+    ├── initExtPlugins() → 解析 -P 参数（透传 protoc 额外参数）
+    ├── selectPlugins()  → 按 -p + -m 筛选插件 → 生成 protoc flags
+    └── protoc <flags> <protos>
+```
+
 ```bash
 # 完整命令格式
 aggo proto -p <plugin> -m <model> -e <proto-path> <idl-file-or-dir>
 
-# 示例（四步）
-# 1. 生成接口代码
-aggo proto -p go  -m server -e ./idl/api ./idl/api/student/student.proto
-aggo proto -p api -m server -e ./idl/api ./idl/api/student/student.proto
+# 示例
 
-# 2. 生成服务器适配代码
-aggo proto -p server  -m server -e ./idl/api ./idl/api/student/student.proto
+# 1. 一步生成全部（默认 -p all -m all）
+aggo proto -e ./idl/api ./idl/api/student/student.proto
 
-# 3. 生成 Kitex/Hertz 适配
-aggo proto -p kitex -m server -e ./idl/api ./idl/api/student/student.proto
-aggo proto -p hertz -m server -e ./idl/api ./idl/api/student/student.proto
+# 2. 仅生成服务端代码（过滤 kitex/client、hertz/client）
+aggo proto -p all -m server -e ./idl/api ./idl/api/student/student.proto
 
-# 4. 生成业务 service
-aggo proto -p service -m server -e ./idl/api ./idl/api/student/student.proto
+# 3. 仅生成客户端适配代码
+aggo proto -p kitex,hertz -m client -e ./idl/api ./idl/api/student/student.proto
+
+# 4. 指定特定基础插件（go/api/server 注册为 base，不受 -m 影响）
+aggo proto -p go,api,server -e ./idl/api ./idl/api/student/student.proto
 ```
 
 ### 参数
@@ -67,7 +81,7 @@ aggo proto -p service -m server -e ./idl/api ./idl/api/student/student.proto
 | 参数 | 缩写 | 说明 | 默认值 |
 |------|------|------|--------|
 | `--plugins` | `-p` | 插件名，逗号分隔或指定多次 | `all` |
-| `--models` | `-m` | 生成模式：`server` / `client` / `all` | `all` |
+| `--models` | `-m` | 生成模式：`server` / `client` / `all`（⚠️ 仅对部分插件有效，详见下方说明） | `all` |
 | `--ext-proto-path` | `-e` | 外部 proto 路径（导入搜索路径） | 空 |
 | `--ext-plugins` | `-P` | 额外 protoc 参数透传 | 空 |
 | `--desc` | `-d` | 只打印命令不执行 | false |
@@ -101,7 +115,35 @@ RegPlugin("hertz", "client", "--go-aghertz_out=model=client:.")
 RegPlugin("openapi", "base", "--openapi_out=fq_schema_naming=true,...:.")
 ```
 
-`-p all` 等效于同时指定所有插件。`-m server` 限制只生成服务端相关的模型（对于 kitex/hertz 选择 server 分支，service 只注册了 server 模式，所以也会生成）。
+`-p all` 等效于同时指定所有插件。
+
+### -m 参数的实际作用范围
+
+`-m` 参数在 `selectPlugins()` 阶段过滤插件，过滤逻辑为：
+
+```go
+if modelAll || m == ModelBase || lo.Contains(models, m) {
+    pgs = append(pgs, mps[m]...)
+}
+```
+
+因为 `m == ModelBase` 的条件，所有注册为 `"base"` 的插件变体都会“无条件执行”，`-m` 根本拦不住。
+
+| 插件 | 注册 model | `-m` 能过滤？ |
+|------|-------------------|:----------------:|
+| `go` | `"base"` | ❌ 总会生成 `api/*.pb.go` |
+| `api` | `"base"` | ❌ 总会生成 `*_interface.go` |
+| `server` | `"base"` | ❌ 总会生成（传 `model=xxx` 占位） |
+| `openapi` | `"base"` | ❌ 总会生成 |
+| `service` | `"server"` | ✅ `-m server` 或 `-m all` |
+| `kitex` | `"server"` + `"client"` | ✅ 可分别控制 server/client |
+| `hertz` | `"server"` + `"client"` | ✅ 可分别控制 server/client |
+
+实际效果：
+- `-m server` → 生成 `service` + `kitex/server` + `hertz/server`
+- `-m client` → 生成 `kitex/client` + `hertz/client`
+- `go`/`api`/`server`/`openapi` → 始终生成，`-m` 无效
+
 
 ### 执行流程
 
