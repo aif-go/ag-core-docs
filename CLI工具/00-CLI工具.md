@@ -14,23 +14,17 @@ tags:
 | 工具                                     | 路径                       | 说明                       |
 | -------------------------------------- | ------------------------ | ------------------------ |
 | [[aggo/00-Aggo\|aggo]]                 | `tool/cmd/aggo/`         | 主入口 CLI，封装 proto 生成流程    |
-| [[gen-go-db/00-GenGoDb\|gen-go-db]]    | `tool/cmd/gen-go-db/`    | 旧版：Excel → YAML → DAO    |
-| [[new-gen-db/00-NewGenDb\|new-gen-db]] | `tool/cmd/new-gen-db/`   | 新版：Excel → 完整 CRUD + DAO |
+| [[gen-go-db/00-GenGoDb\|gen-go-db]]    | `tool/cmd/gen-go-db/`    | Excel → 完整 CRUD + DAO 生成 |
 | [[protoc插件族/00-Protoc插件族\|protoc 插件]]  | `tool/cmd/protoc-gen-*/` | 6 个 protoc 插件            |
 
 ## 生成流水线
 
 ```
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────┐
-│  Excel  │───→│  gen-go-db │───→│  YAML   │───→│ new-gen-db │
-│ 模板    │    │ (解析)     │    │ 定义    │    │ (代码生成) │
-└─────────┘    └──────────┘    └─────────┘    └──────────┘
-                                                    │
-                                            ┌───────▼────────┐
-                                            │ Go Model       │
-                                            │ DAO CRUD       │
-                                            │ 条件查询       │
-                                            └────────────────┘
+┌─────────┐    ┌─────────────────────────┐    ┌──────────┐
+│  Excel  │───→│       gen-go-db         │───→│ Go Model  │
+│ 模板    │    │ (解析 + 代码生成)        │    │ DAO CRUD  │
+└─────────┘    └─────────────────────────┘    │ 条件查询  │
+                                               └──────────┘
 
 ┌─────────┐    ┌──────────────────┐    ┌──────────────────┐
 │ .proto  │───→│ aggo / protoc    │───→│ API 接口代码     │
