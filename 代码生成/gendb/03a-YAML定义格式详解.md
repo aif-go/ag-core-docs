@@ -49,7 +49,8 @@ table_name → columns → primary_key → constraints → indexes → self_quer
 
 每列属性固定顺序：`name → type → [length] → not_null → [default] → auto_increment → support_update → [description] → [tag]`
 
-> `[]` 括起来的字段仅在**非空**时输出，空字符串或 `false` 不输出。
+> `[]` 括起来的字段仅在**非空**时输出，空字符串或 `false` 不输出。  
+> ⚠️ 例外：`self_query_rules` 中的 `dynamic_sql` 和 `sql_template` **总是输出**，非动态模板时值为 `false` 和 `""`。
 
 ## 列定义（columns）
 
@@ -103,6 +104,8 @@ YAML 中的 `type` 字段来自 Excel 原始填写值，在 Model 解析时通�
 | `///@javaVersion` | 标记为乐观锁字段 | 不生成特殊标签，仅用于生成代码中的逻辑判断 |
 
 Tag 判断使用 `strings.Contains()`，因此 `///@create` 可出现在 tag 值的任意位置。
+
+> ⚠️ **`///@omitempty` 注意**：某些 Excel 模板的 Tag 列填写了 `///@omitempty`，但 Model 解析器**不读取此标记**——它既不会在 GORM 标签中生成 `omitempty`，也不会影响任何代码逻辑。此标记仅作为 Excel 中的提示信息使用，写入 YAML 的 `tag` 字段后会被**静默忽略**。
 
 ### Model 解析器实际消费的字段
 
