@@ -383,23 +383,22 @@ db.Where("ID IN ?", ids).Find(&list)
 
 ### 3.4 事务
 
-使用 Repository 的事务支持：
+Biz 层注入的是 **DAO 接口**，不需要手动管理事务。事务通过声明式中间件自动管理：
 
 ```go
-// 自动事务（propagation: REQUIRED）
-err := repository.Transaction(ctx, func(txCtx context.Context) error {
-    dao.InsertOne(txCtx, &model.Student{Name: "张三"})
-    dao.InsertOne(txCtx, &model.Student{Name: "李四"})
-    return nil // commit; return error → rollback
-})
+// init() 中声明事务
+svcgen.StudentServiceCreateStudentCallInfo.AddTag(agdb.TransactionTag, true)
 
-// 指定事务传播行为
-err := repository.TransactionWithTP(ctx, agdb.PropagationRequiresNew, func(txCtx context.Context) error {
-    // 在独立事务中执行
-    dao.InsertOne(txCtx, &model.Student{Name: "王五"})
-    return nil
-})
+// biz 层直接调用 DAO 方法，事务由中间件自动处理
+func (b *StudentBiz) Create(ctx context.Context, req *CreateRequest) error {
+    _, err := b.studentDao.InsertOne(ctx, &model.Student{Name: "张三"})
+    return err
+}
 ```
+
+**为什么 DAO 能自动感知事务？** DAO 内部使用 `Repository.DB(ctx)` 获取数据库实例，它会自动检查 context 中是否有事务绑定。如果中间件已开启事务，`DB(ctx)` 返回事务连接；否则返回普通连接。
+
+> **注意**：Biz 层注入的是 DAO 接口（`dao.IStudentDao`），无法调用 `repository.Transaction()`。如果确有需要手动控制事务边界的场景（批量操作、复杂事务等），请在持有 `*gormdb.Repository` 的层（如 service 层）进行操作。
 
 ### 3.5 分表策略
 
