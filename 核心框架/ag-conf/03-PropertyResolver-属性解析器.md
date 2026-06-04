@@ -90,6 +90,8 @@ func (pspr *PropertySourcesPropertyResolver) getProperty(key string, resolve boo
 
 ### 支持 ${} 语法
 
+占位符解析在**每次读取属性值时自动触发**（`getProperty(key, true)` → `resolveNestedPlaceholders`）。这意味着在 YAML 配置中可以直接引用其他属性的值：
+
 ```yaml
 # 基本占位符
 db_url: ${DB_URL}
@@ -97,9 +99,19 @@ db_url: ${DB_URL}
 # 带默认值
 port: ${SERVER_PORT:8080}
 
+# 跨路径引用（引用同一 YAML 中其他 section 的值）
+nacos:
+  config:
+    serveraddr: 192.168.1.1:8848
+  naming:
+    serveraddr: ${nacos.config.serveraddr}    # ← 引用 config 下的值
+    namespace: ${nacos.config.namespace}
+
 # 嵌套占位符
 app_name: app-${ENV:dev}
 ```
+
+> 只要属性值以 `${` 开头，解析器就会递归查找并替换，key 匹配大小写不敏感（`EqualFold`）。
 
 ### 递归解析流程
 
