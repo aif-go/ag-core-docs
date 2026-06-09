@@ -17,6 +17,8 @@ tags:
 
 ```go
 // pipeline.go:26-31
+// import "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet/simple"
+
 type pipeline struct {
     head    *handlerContext  // 头节点（headHandler）
     tail    *handlerContext  // 尾节点（tailHandler）
@@ -348,3 +350,42 @@ pipeline.AddFirst(handler1)
       → HandleInactive → ctx.FireInactive(err)
         → tail → 没有 InactiveHandler → 结束
 ```
+
+---
+
+## 常见陷阱
+
+### ❌ 不要调用 `ctx.Next()` 或 `ctx.ChannelHandlerContext`
+
+这些是旧版 API，**当前版本不存在**。正确传播方式：
+- Inbound 继续传播：`ctx.FireRead(message)`
+- Outbound 继续传播：`ctx.FireWrite(message)`
+- Handler 方法**无返回值**
+
+```go
+// ❌ 旧版写法（已废弃）
+func (h *Handler) ChannelRead(ctx simple.ChannelHandlerContext, msg any) error {
+    return ctx.Next()
+}
+
+// ✅ 当前 API
+func (h *Handler) HandleRead(ctx simple.InboundContext, msg any) {
+    ctx.FireRead(msg) // 传播到下一个 InboundHandler
+}
+```
+
+### ❌ headHandler 只接受 `[]byte`
+
+`headHandler.HandleWrite` 对非 `[]byte` 类型会 **panic**。确保出站编码器输出 `[]byte`：
+
+```go
+// ❌ 不经过编码器直接 Write
+ctx.Write(someStruct)  // → headHandler → panic: unsupported type
+
+// ✅ 经过编码器转成 []byte
+ctx.FireWrite(encode(someStruct))  // → Encoder → headHandler → Write1([]byte)
+```
+
+### ❌ tailHandler 会关闭连接
+
+如果 Pipeline 中没有任何 `ExceptionHandler` 捕获异常，`FireExceptionCaught` 最终到达 `tailHandler`，它会**直接关闭连接**。建议在业务 Handler 链末尾添加 Recovery Handler。

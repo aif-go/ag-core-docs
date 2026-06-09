@@ -115,6 +115,8 @@ SimpleEventHandler.OnTraffic(conn)
     4. 未消费数据 → conn.inboundBuffer             // 持久化下次处理
 ```
 
+> `getChannelFromConn` 是内部函数；业务代码从 Conn 获取 Channel 请用公开 API `simple.ChannelFromConn(conn)`。
+
 ### OnClose 桥接
 
 ```
@@ -134,6 +136,11 @@ Pipeline 的内部结构和 Handler 类型体系在 [[03-Pipeline与事件传播
 ## 创建方式
 
 ```go
+import (
+    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet"
+    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet/simple"
+)
+
 handler, _ := simple.NewSimpleEventHandlerWithOptions(
     // 1. 指定 channelInitializer——连接建立时调用
     simple.WithChannelInitializer(func(channel simple.Channel) error {
@@ -160,3 +167,27 @@ server, _ := agonet.NewServer(handler, config)
 | 可组合性 | 硬编码在 OnTraffic 中 | `AddLast(decoder, biz, encoder)` |
 | TCP 粘包 | 手动处理 | `LengthFieldDecoder` 内置 |
 | 异常处理 | OnClose 统一处理 | `ExceptionHandler` 链式捕获 |
+
+## 常见陷阱
+
+### ❌ 忘记添加编解码器
+
+Simple 层不会自动处理 TCP 半包/粘包。不加解码器，`HandleRead` 收到的 `msg` 是 `agonet.Reader`（原始字节流），需要手动拆帧。
+
+```go
+// ✅ 总是先加解码器再加业务 Handler
+ch.Pipeline().AddLast(
+    simple.NewLengthFieldDecoder(binary.BigEndian, 1024*1024, 0, 4, 0, 4),
+    &BizHandler{},
+)
+```
+
+### ❌ 解码器顺序放反
+
+Pipeline 是双向链表。`AddLast` 添加的顺序 = Inbound 传播顺序。解码器必须在业务 Handler **之前**：
+- ✅ `AddLast(decoder, bizHandler)` — bizHandler 收到解码后的帧
+- ❌ `AddLast(bizHandler, decoder)` — bizHandler 收到的是 Reader
+
+### ❌ OnOpen 返回 `out []byte` 在 Simple 层无效
+
+`SimpleEventHandler.OnOpen` 接管了实现，始终返回 nil。如果需要在连接建立时发送数据，在 Handler 的 `HandleActive` 中使用 `ctx.Write()`。

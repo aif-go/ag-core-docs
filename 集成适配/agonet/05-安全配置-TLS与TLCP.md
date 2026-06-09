@@ -150,6 +150,8 @@ config:
 
 ```go
 // client.go:133-152
+// import "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet"
+
 switch cliTlsType {
 case TLSType_NONE:
     c, err = net.Dial(network, addr)
@@ -158,4 +160,42 @@ case TLSType_TLS:
 case TLSType_TLCP:
     c, err = tlcp.Dial(network, addr, tlcpCfg)
 }
+```
+
+---
+
+## 常见陷阱
+
+### ❌ TLCP 证书排列搞反
+
+TLCP 使用**双证书体系**（签名证书 + 加密证书），与 TLS 的单证书体系不同。`auth` 和 `sign` 和 `enc` 是三种不同用途的证书：
+
+| 字段 | 用途 | 搞反后果 |
+|------|------|---------|
+| `authCertPath` / `authKeyPath` | 认证证书（身份验证） | 握手失败 |
+| `signCertPath` / `signKeyPath` | 签名证书（数字签名） | 签名验证失败 |
+| `encCertPath` / `encKeyPath` | 加密证书（密钥交换） | 无法解密 |
+
+> `auth` ≠ `sign` ≠ `enc`，不能把同一个证书填到三个字段里。
+
+### ❌ 证书路径相对于 `certsDir` 而非工作目录
+
+```yaml
+security:
+  certsDir: /etc/certs      # 基础路径
+  tls:
+    authCertPath: server.crt  # 实际路径: /etc/certs/server.crt
+```
+
+所有证书路径都拼接在 `certsDir` 之后，不要写绝对路径。
+
+### ❌ 客户端忘记配置 `cliType`
+
+客户端默认复用服务端的 `type`。如果服务端是 `tls_tlcp` 双栈而客户端不指定 `cliType`，客户端会尝试 `tls_tlcp` 导致 Dial 失败。
+
+```yaml
+# ✅ 明确指定客户端 TLS 类型
+security:
+  type: tls_tlcp       # 服务端双栈
+  cliType: tls          # 客户端只用 TLS
 ```
