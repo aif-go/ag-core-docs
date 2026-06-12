@@ -206,7 +206,7 @@ package internal
 
 import (
     "agaidevdemo/internal/svcgen"
-    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb"
+    "github.com/aif-go/ag-core/contribute/agdb"
 )
 
 func init() {

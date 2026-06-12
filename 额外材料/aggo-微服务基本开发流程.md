@@ -1,5 +1,5 @@
 ## 1. 创建项目
-`aggo new  -r http://gitlab.allinfinance.com/aifgo/ag-layout-demo.git -b base agaidevdemo`
+`aggo new  -r http://github.com/aif-go/ag-layout-demo.git -b base agaidevdemo`
 使用项目模版创建项目：agaidevdemo
 
 ## 2. 定义api接口

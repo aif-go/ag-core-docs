@@ -77,7 +77,7 @@ redis:
 使用 `ag_crypto.GetEncrytorPrimary()` 获取主加密器进行解密：
 
 ```go
-import "gitlab.allinfinance.com/aifgo/ag-core/ag/ag_crypto"
+import "github.com/aif-go/ag-core/ag/ag_crypto"
 
 // 当前实现：Base64 解码
 // 后续可替换为 AES/RSA 等真实加密

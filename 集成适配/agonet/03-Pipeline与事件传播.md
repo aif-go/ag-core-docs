@@ -17,7 +17,7 @@ tags:
 
 ```go
 // pipeline.go:26-31
-// import "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet/simple"
+// import "github.com/aif-go/ag-core/contribute/agonet/simple"
 
 type pipeline struct {
     head    *handlerContext  // 头节点（headHandler）
