@@ -1,0 +1,200 @@
+site_name: ag-core 文档
+site_description: 企业级 Go 微服务框架 + 代码生成平台
+site_author: aif-go
+
+docs_dir: docs
+site_dir: site
+
+exclude_docs: |
+  .obsidian/*
+  .git/*
+
+repo_url: https://github.com/aif-go/ag-core
+repo_name: aif-go/ag-core
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+  - tables
+  - admonition
+
+plugins:
+  - search:
+      lang: zh
+
+nav:
+  - 首页: 00-文档总览.md
+  - 项目概览: 01-项目概览.md
+
+  - 核心框架:
+      - 概览: 核心框架/00-核心框架.md
+      - AgApp:
+          - 概览: 核心框架/ag-app/00-AgApp.md
+          - 核心 App: 核心框架/ag-app/01-核心App.md
+          - Server 接口: 核心框架/ag-app/02-Server接口.md
+          - FX 集成: 核心框架/ag-app/03-FX集成.md
+          - 使用指南: 核心框架/ag-app/04-使用指南.md
+      - AgConf:
+          - 概览: 核心框架/ag-conf/00-AgConf-概览.md
+          - 架构概览: 核心框架/ag-conf/01-架构概览.md
+          - PropertySource: 核心框架/ag-conf/02-PropertySource-属性源.md
+          - PropertyResolver: 核心框架/ag-conf/03-PropertyResolver-属性解析器.md
+          - Environment: 核心框架/ag-conf/04-Environment-环境抽象.md
+          - 配置加载: 核心框架/ag-conf/05-ConfigLoading-配置加载.md
+          - 配置绑定: 核心框架/ag-conf/06-Bind-配置绑定.md
+          - 配置热更新: 核心框架/ag-conf/07-ConfigWatch-配置热更新.md
+          - 配置解密: 核心框架/ag-conf/08-Decrypt-配置解密.md
+          - 与 Spring 对比: 核心框架/ag-conf/09-与Spring对比.md
+          - 使用指南: 核心框架/ag-conf/10-使用指南.md
+      - AgServer: 核心框架/ag-server/00-AgServer.md
+      - AgService:
+          - 概览: 核心框架/ag-service/00-AgService.md
+          - Endpoint 与中间件: 核心框架/ag-service/01-Endpoint与中间件.md
+          - CallInfo 与上下文: 核心框架/ag-service/02-CallInfo与上下文.md
+      - AgError: 核心框架/ag-error/00-AgError.md
+      - AgCrypto: 核心框架/ag-crypto/00-AgCrypto.md
+      - AgCommon:
+          - 概览: 核心框架/ag-common/00-AgCommon.md
+          - AgMetadata: 核心框架/ag-common/01-AgMetadata.md
+      - AgExt:
+          - 概览: 核心框架/ag-ext/00-AgExt.md
+          - GetFlattenedMap: 核心框架/ag-ext/01-GetFlattenedMap.md
+          - CopyOnWrite: 核心框架/ag-ext/02-CopyOnWrite.md
+          - Future: 核心框架/ag-ext/03-Future.md
+          - IP 工具: 核心框架/ag-ext/04-IP工具.md
+      - AgLog:
+          - 概览: 核心框架/ag-log/00-AgLog.md
+          - 核心 agslog: 核心框架/ag-log/01-核心agslog.md
+          - 扇出 fanout: 核心框架/ag-log/02-扇出fanout.md
+          - 异步日志 async: 核心框架/ag-log/03-异步日志async.md
+          - Zap 桥接: 核心框架/ag-log/04-Zap桥接.md
+          - FX 集成: 核心框架/ag-log/05-FX集成.md
+          - 使用指南: 核心框架/ag-log/06-使用指南.md
+      - AgLog/agslog:
+          - 总览: 核心框架/ag-log/agslog/00-总览与分析.md
+          - init 初始化: 核心框架/ag-log/agslog/01-init初始化.md
+          - TopLogger 生命周期: 核心框架/ag-log/agslog/02-TopLogger生命周期.md
+          - NamedHandler 体系: 核心框架/ag-log/agslog/03-NamedHandler体系.md
+          - 名称解析与热替换: 核心框架/ag-log/agslog/04-名称解析与热替换.md
+          - 完整流程时序: 核心框架/ag-log/agslog/05-完整流程时序.md
+
+  - 集成适配:
+      - 概览: 集成适配/00-集成适配.md
+      - agdb:
+          - 概览: 集成适配/agdb/00-Agdb.md
+          - 事务传播: 集成适配/agdb/01-事务传播.md
+          - gormdb: 集成适配/agdb/02-gormdb.md
+          - 命名 SQL: 集成适配/agdb/03-命名SQL.md
+          - WHERE 条件构建器: 集成适配/agdb/04-WHERE条件构建器.md
+          - FX 集成: 集成适配/agdb/05-FX集成.md
+          - 使用指南: 集成适配/agdb/06-使用指南.md
+          - 生成 DAO 使用指南: 集成适配/agdb/07-生成DAO使用指南.md
+      - agdao: 集成适配/agdb/agdao/00-Agdao.md
+      - aghertz:
+          - 概览: 集成适配/aghertz/00-AgHertz.md
+          - 服务端: 集成适配/aghertz/01-服务端.md
+          - 客户端: 集成适配/aghertz/02-客户端.md
+          - 服务注册与发现: 集成适配/aghertz/03-服务注册与发现.md
+          - 基础客户端与序列化: 集成适配/aghertz/04-基础客户端与序列化.md
+          - FX 集成: 集成适配/aghertz/05-FX集成.md
+          - 使用指南: 集成适配/aghertz/06-使用指南.md
+      - agkitex:
+          - 概览: 集成适配/agkitex/00-AgKitex.md
+          - 服务端: 集成适配/agkitex/01-服务端.md
+          - 客户端: 集成适配/agkitex/02-客户端.md
+          - 服务注册与发现: 集成适配/agkitex/03-服务注册与发现.md
+          - 元数据透传: 集成适配/agkitex/04-元数据透传.md
+          - FX 集成: 集成适配/agkitex/05-FX集成.md
+          - 使用指南: 集成适配/agkitex/06-使用指南.md
+          - 流式传输: 集成适配/agkitex/07-流式传输.md
+      - agredis:
+          - 概览: 集成适配/agredis/00-AgRedis.md
+          - 配置与客户端: 集成适配/agredis/01-配置与客户端模式.md
+          - 使用指南: 集成适配/agredis/02-使用指南.md
+      - agkafka:
+          - 概览: 集成适配/agkafka/00-AgKafka.md
+          - 配置: 集成适配/agkafka/01-配置.md
+          - FX 集成: 集成适配/agkafka/02-FX集成.md
+          - 使用指南: 集成适配/agkafka/03-使用指南.md
+      - agnacos:
+          - 概览: 集成适配/agnacos/00-AgNacos.md
+          - 远程配置中心: 集成适配/agnacos/01-远程配置中心.md
+          - 服务发现与注册: 集成适配/agnacos/02-服务发现与注册.md
+          - 使用指南: 集成适配/agnacos/03-使用指南.md
+      - agonet:
+          - 概览: 集成适配/agonet/00-Agonet.md
+          - 事件循环框架: 集成适配/agonet/01-核心事件循环框架.md
+          - Simple 管道层: 集成适配/agonet/02-Simple管道层概述.md
+          - Pipeline 与事件传播: 集成适配/agonet/03-Pipeline与事件传播.md
+          - 客户端: 集成适配/agonet/04-客户端.md
+          - TLS 与 TLCP: 集成适配/agonet/05-安全配置-TLS与TLCP.md
+          - 内存管理与对象池: 集成适配/agonet/06-内存管理与对象池.md
+          - 使用指南: 集成适配/agonet/07-使用指南.md
+
+  - CLI 工具:
+      - 概览: CLI工具/00-CLI工具.md
+      - aggo: CLI工具/aggo/00-Aggo.md
+      - gen-go-db:
+          - 概览: CLI工具/gen-go-db/00-GenGoDb.md
+          - yaml 命令: CLI工具/gen-go-db/01-yaml命令.md
+          - db 命令: CLI工具/gen-go-db/02-db命令.md
+          - sheet 命令: CLI工具/gen-go-db/03-sheet命令.md
+      - protoc 插件族: CLI工具/protoc插件族/00-Protoc插件族.md
+
+  - 代码生成:
+      - 概览: 代码生成/00-代码生成.md
+      - Excel 到 YAML: 代码生成/Excel到YAML流程/00-Excel到YAML.md
+      - YAML 到 DAO: 代码生成/YAML到DAO代码/00-YAML到DAO.md
+      - Protobuf 生成:
+          - 概览: 代码生成/Protobuf生成流程/00-Protobuf生成.md
+          - 代码生成引擎: 代码生成/Protobuf生成流程/01-代码生成引擎架构.md
+      - gendb:
+          - 概览: 代码生成/gendb/00-GenGoDb.md
+          - Excel 解析: 代码生成/gendb/01-Excel解析架构.md
+          - WHERE 条件解析: 代码生成/gendb/02-WHERE条件解析器.md
+          - YAML 定义格式: 代码生成/gendb/03a-YAML定义格式详解.md
+          - YAML 生成器: 代码生成/gendb/03-YAML生成器.md
+          - Model 代码生成: 代码生成/gendb/04-Model代码生成引擎.md
+          - DAO 代码生成: 代码生成/gendb/05-DAO代码生成引擎.md
+          - 使用指南: 代码生成/gendb/06-使用指南.md
+          - DAO 产物详解: 代码生成/gendb/07-DAO生成产物详解.md
+          - Excel 模板规范: 代码生成/gendb/08-Excel模板规范.md
+
+  - 架构决策:
+      - 概览: 架构决策/00-架构决策.md
+      - 技术评估:
+          - nacos-sdk-v2 升级: 架构决策/技术评估/01-nacos-sdk-v2升级评估.md
+          - 自定义 HttpAgent: 架构决策/技术评估/02-agnacos自定义HttpAgent方案.md
+      - 未来优化:
+          - App 生命周期钩子: 架构决策/未来优化/01-App生命周期钩子.md
+          - AgCrypto 加密模块: 架构决策/未来优化/02-AgCrypto加密模块.md
+          - AgLog 日志归档: 架构决策/未来优化/03-AgLog日志归档时间问题.md
+          - AgNacos 短连接: 架构决策/未来优化/04-AgNacos大量短连接问题.md
+
+  - 开发指南:
+      - 概览: 开发指南/00-开发指南.md
+      - 环境搭建: 开发指南/环境搭建/00-环境搭建.md
+      - 最佳实践: 开发指南/最佳实践/00-最佳实践.md
+
+  - 附加:
+      - 文档组织规范: 文档组织规范.md
+      - DAO 使用指南: 人工补充材料/DAO使用指南.md
+      - aggo 开发流程: 额外材料/aggo-微服务基本开发流程.md
