@@ -260,7 +260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../00-%E6%96%87%E6%A1%A3%E6%80%BB%E8%A7%88/" class="md-nav__link">
+      <a href="../../../00-文档总览.md" class="md-nav__link">
         
   
   
@@ -5402,7 +5402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%96%87%E6%A1%A3%E7%BB%84%E7%BB%87%E8%A7%84%E8%8C%83/" class="md-nav__link">
+      <a href="../../../文档组织规范.md" class="md-nav__link">
         
   
   
@@ -5430,7 +5430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E4%BA%BA%E5%B7%A5%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99/DAO%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="md-nav__link">
+      <a href="../../../人工补充材料/DAO使用指南.md" class="md-nav__link">
         
   
   
@@ -5458,7 +5458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E9%A2%9D%E5%A4%96%E6%9D%90%E6%96%99/aggo-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%9F%BA%E6%9C%AC%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+      <a href="../../../额外材料/aggo-微服务基本开发流程.md" class="md-nav__link">
         
   
   
@@ -5783,8 +5783,8 @@
 <p>长连接通过 <code>agonet.Client</code> 建立持久 TCP 连接，保持 Conn 以避免每次通信的三次握手开销。数据流经 Simple 的 Pipeline 链处理。</p>
 <h3 id="_3">创建<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet/simple&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet/simple&quot;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// 1. 创建 SimpleEventHandler（服务端/客户端都适用）</span>
@@ -5838,7 +5838,7 @@
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        → ctx.Write(response) → Encoder.HandleWrite → head → TCP 发送
 </code></pre></div>
 <h3 id="channel">从连接获取 Channel<a class="headerlink" href="#channel" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet/simple&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet/simple&quot;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nx">channel</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">simple</span><span class="p">.</span><span class="nx">ChannelFromConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// 之后可以操作 Pipeline</span>
@@ -5848,8 +5848,8 @@
 <h3 id="_5">示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="s">&quot;encoding/binary&quot;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet/simple&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet/simple&quot;</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kd">type</span><span class="w"> </span><span class="nx">echoHandler</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
@@ -5885,8 +5885,8 @@
 <p><code>SimpleShortClient</code> 封装了「建连 → 发 → 收 → 断连」模式。每次 <code>RequestSync()</code> 创建一条新连接，请求完成后关闭。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="s">&quot;context&quot;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet/simple&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet/simple&quot;</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">// simple/short_client.go:15-24</span>
@@ -5921,8 +5921,8 @@
 <h3 id="_7">创建<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="s">&quot;time&quot;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet&quot;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet/simple&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet&quot;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet/simple&quot;</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1">// 手动创建</span>
@@ -5952,7 +5952,7 @@
 - 不需要编解码处理
 - 极简协议（如固定长度消息）
 - 对 Pipeline 链式模型无需求</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/aif-go/ag-core/contribute/agonet&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github/aif-go/ag-core/contribute/agonet&quot;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">type</span><span class="w"> </span><span class="nx">rawHandler</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
