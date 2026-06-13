@@ -61,6 +61,6 @@ gen-go-db yaml -t
 
 | 主题 | 文档 |
 |------|------|
-| Excel 模板填写规范 | [[../../代码生成/gendb/08-Excel模板规范\|Excel 模板规范]] |
-| YAML 定义格式详解 | [[../../代码生成/gendb/03a-YAML定义格式详解\|表 YAML 定义格式详解]] |
-| Excel 解析架构 | [[../../代码生成/gendb/01-Excel解析架构\|Excel 解析架构]] |
+| Excel 模板填写规范 | [Excel 模板规范](../../代码生成/gendb/08-Excel模板规范.md) |
+| YAML 定义格式详解 | [表 YAML 定义格式详解](../../代码生成/gendb/03a-YAML定义格式详解.md) |
+| Excel 解析架构 | [Excel 解析架构](../../代码生成/gendb/01-Excel解析架构.md) |

@@ -39,13 +39,13 @@ Protobuf 定义的 RPC Service
 
 | 文档 | 内容 |
 |------|------|
-| [[01-服务端]] | AgKitexServer、KitexServerSuiteBuilder、优先级中间件 |
-| [[02-客户端]] | KitexSuiteBuilder、双模式 Resolver |
-| [[03-服务注册与发现]] | Nacos Registry + AgNacosResolver（Spring gRPC 兼容） |
-| [[04-元数据透传]] | HTTP2 StreamingMetaHandler |
-| [[05-FX集成]] | FX Module 装配与依赖注入 |
-| [[06-使用指南]] | **面向业务开发者：快速上手、配置、最佳实践** |
-| [[07-流式传输]] | protobuf stream 方法实现、客户端调用、配置与限制 |
+| [01-服务端](01-服务端.md) | AgKitexServer、KitexServerSuiteBuilder、优先级中间件 |
+| [02-客户端](02-客户端.md) | KitexSuiteBuilder、双模式 Resolver |
+| [03-服务注册与发现](03-服务注册与发现.md) | Nacos Registry + AgNacosResolver（Spring gRPC 兼容） |
+| [04-元数据透传](04-元数据透传.md) | HTTP2 StreamingMetaHandler |
+| [05-FX集成](05-FX集成.md) | FX Module 装配与依赖注入 |
+| [06-使用指南](06-使用指南.md) | **面向业务开发者：快速上手、配置、最佳实践** |
+| [07-流式传输](07-流式传输.md) | protobuf stream 方法实现、客户端调用、配置与限制 |
 
 ## 架构分层
 

@@ -86,12 +86,12 @@ ag_log/
 
 | 文件 | 内容 |
 |------|------|
-| [[01-核心agslog]] | Builder、NamedHandler、HandlerFactory、ReplaceableHandler |
-| [[02-扇出fanout]] | 按名称路由到多个 handler |
-| [[03-异步日志async]] | Worker 池、队列、满策略、基准测试 |
-| [[04-Zap桥接]] | logzap + slogzap 桥接 |
-| [[05-FX集成]] | FX Module 组装与配置绑定 |
-| [[06-使用指南]] | **面向业务开发者：快速上手、配置、最佳实践** |
+| [01-核心agslog](01-核心agslog.md) | Builder、NamedHandler、HandlerFactory、ReplaceableHandler |
+| [02-扇出fanout](02-扇出fanout.md) | 按名称路由到多个 handler |
+| [03-异步日志async](03-异步日志async.md) | Worker 池、队列、满策略、基准测试 |
+| [04-Zap桥接](04-Zap桥接.md) | logzap + slogzap 桥接 |
+| [05-FX集成](05-FX集成.md) | FX Module 组装与配置绑定 |
+| [06-使用指南](06-使用指南.md) | **面向业务开发者：快速上手、配置、最佳实践** |
 
 ## 设计要点
 

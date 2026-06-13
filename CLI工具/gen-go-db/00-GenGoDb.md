@@ -43,9 +43,9 @@ tags:
 
 | 子命令 | 功能 | 输入 → 输出 | 详解文档 |
 |-------|------|------------|---------|
-| **`gen-go-db yaml`** | Excel 模板 → YAML 定义 | `.xlsx` → `repository/yaml/*.yaml` | [[01-yaml命令\|yaml 命令详解]] |
-| **`gen-go-db db`** | YAML 定义 → Go 代码 | `*.yaml` → `repository/model/*.go` + `repository/dao/*.go` | [[02-db命令\|db 命令详解]] |
-| **`gen-go-db sheet`** | Excel sheet 拆分 | `.xlsx` → 拆分后的 `.xlsx` | [[03-sheet命令\|sheet 命令详解]] |
+| **`gen-go-db yaml`** | Excel 模板 → YAML 定义 | `.xlsx` → `repository/yaml/*.yaml` | [yaml 命令详解](01-yaml命令.md) |
+| **`gen-go-db db`** | YAML 定义 → Go 代码 | `*.yaml` → `repository/model/*.go` + `repository/dao/*.go` | [db 命令详解](02-db命令.md) |
+| **`gen-go-db sheet`** | Excel sheet 拆分 | `.xlsx` → 拆分后的 `.xlsx` | [sheet 命令详解](03-sheet命令.md) |
 
 ## 快速上手
 
@@ -92,11 +92,11 @@ repository/
 
 | 主题 | 文档 |
 |------|------|
-| Excel 解析架构 | [[../../代码生成/gendb/01-Excel解析架构\|Excel 解析架构]] |
-| WHERE 条件解析器 | [[../../代码生成/gendb/02-WHERE条件解析器\|WHERE 条件解析器]] |
-| YAML 生成器 | [[../../代码生成/gendb/03-YAML生成器\|YAML 生成器]] |
-| 表 YAML 定义格式 | [[../../代码生成/gendb/03a-YAML定义格式详解\|YAML 定义格式详解]] |
-| Model 代码生成引擎 | [[../../代码生成/gendb/04-Model代码生成引擎\|Model 代码生成引擎]] |
-| DAO 代码生成引擎 | [[../../代码生成/gendb/05-DAO代码生成引擎\|DAO 代码生成引擎]] |
-| 生成产物详解 | [[../../代码生成/gendb/07-DAO生成产物详解\|DAO 生成产物详解]] |
-| Excel 模板规范 | [[../../代码生成/gendb/08-Excel模板规范\|Excel 模板规范]] |
+| Excel 解析架构 | [Excel 解析架构](../../代码生成/gendb/01-Excel解析架构.md) |
+| WHERE 条件解析器 | [WHERE 条件解析器](../../代码生成/gendb/02-WHERE条件解析器.md) |
+| YAML 生成器 | [YAML 生成器](../../代码生成/gendb/03-YAML生成器.md) |
+| 表 YAML 定义格式 | [YAML 定义格式详解](../../代码生成/gendb/03a-YAML定义格式详解.md) |
+| Model 代码生成引擎 | [Model 代码生成引擎](../../代码生成/gendb/04-Model代码生成引擎.md) |
+| DAO 代码生成引擎 | [DAO 代码生成引擎](../../代码生成/gendb/05-DAO代码生成引擎.md) |
+| 生成产物详解 | [DAO 生成产物详解](../../代码生成/gendb/07-DAO生成产物详解.md) |
+| Excel 模板规范 | [Excel 模板规范](../../代码生成/gendb/08-Excel模板规范.md) |

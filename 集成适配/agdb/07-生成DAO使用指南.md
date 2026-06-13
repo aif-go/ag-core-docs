@@ -491,11 +491,11 @@ baseDao.RegTbInfoOpt(WithTbNameStrategy(func(ctx context.Context, info *TableInf
 
 | 文档 | 内容 |
 |------|------|
-| [[../../CLI工具/gen-go-db/00-GenGoDb\|gen-go-db CLI]] | 如何运行代码生成工具 |
-| [[../../代码生成/gendb/07-DAO生成产物详解\|DAO 生成产物详解]] | 每个生成文件的代码结构详解 |
-| [[../../代码生成/gendb/03a-YAML定义格式详解\|YAML 定义格式]] | 表结构 YAML 定义 |
-| [[../02-gormdb\|Repository 使用]] | GORM 封装层详解 |
-| [[../04-WHERE条件构建器\|条件构建器]] | 动态 WHERE 构建 |
-| [[../03-命名SQL\|命名 SQL]] | 命名查询的执行机制 |
-| [[agdao/00-Agdao\|Agdao 增强层]] | BaseDao 接口与表名策略 |
-| [[../05-FX集成\|FX 集成]] | agdb FX 依赖注入 |
+| [gen-go-db CLI](../../CLI工具/gen-go-db/00-GenGoDb.md) | 如何运行代码生成工具 |
+| [DAO 生成产物详解](../../代码生成/gendb/07-DAO生成产物详解.md) | 每个生成文件的代码结构详解 |
+| [YAML 定义格式](../../代码生成/gendb/03a-YAML定义格式详解.md) | 表结构 YAML 定义 |
+| [Repository 使用](02-gormdb.md) | GORM 封装层详解 |
+| [条件构建器](04-WHERE条件构建器.md) | 动态 WHERE 构建 |
+| [命名 SQL](03-命名SQL.md) | 命名查询的执行机制 |
+| [Agdao 增强层](agdao/00-Agdao.md) | BaseDao 接口与表名策略 |
+| [FX 集成](05-FX集成.md) | agdb FX 依赖注入 |

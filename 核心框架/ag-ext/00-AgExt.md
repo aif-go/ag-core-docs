@@ -33,10 +33,10 @@ ag/ag_ext/
 
 | 子包 | 路径 | 文档 | 说明 | 状态 |
 |------|------|------|------|------|
-| — | `ag_ext/` | [[01-GetFlattenedMap\|配置展开]] | YAML/JSON 嵌套结构展开为扁平 map | ✅ |
-| — | `ag_ext/` | [[02-CopyOnWrite\|并发安全容器]] | 泛型 CopyOnWriteSlice/Map + AtomicValue | ✅ |
-| future | `ag_ext/future/` | [[03-Future\|Future 异步模式]] | 基于 ants 协程池的 Future/Promise | ✅ |
-| ip | `ag_ext/ip/` | [[04-IP工具\|IP 工具]] | 端口检查、IP 范围匹配、主机探测 | ✅ |
+| — | `ag_ext/` | [配置展开](01-GetFlattenedMap.md) | YAML/JSON 嵌套结构展开为扁平 map | ✅ |
+| — | `ag_ext/` | [并发安全容器](02-CopyOnWrite.md) | 泛型 CopyOnWriteSlice/Map + AtomicValue | ✅ |
+| future | `ag_ext/future/` | [Future 异步模式](03-Future.md) | 基于 ants 协程池的 Future/Promise | ✅ |
+| ip | `ag_ext/ip/` | [IP 工具](04-IP工具.md) | 端口检查、IP 范围匹配、主机探测 | ✅ |
 
 ---
 

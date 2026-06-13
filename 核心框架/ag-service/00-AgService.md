@@ -86,13 +86,13 @@ Actual Handler → internal/service/xxx.go
 | `AgServiceBuilder` | 调用链构建器：合并中间件 → 排序 → 包装 |
 | `AgServiceProxyBase` | 服务代理基类：Endpoint 注册与获取 |
 
-详见 [[01-Endpoint与中间件]]。
+详见 [01-Endpoint与中间件](01-Endpoint与中间件.md)。
 
 ## CallInfo 上下文传递
 
 `CallInfo` 携带调用级别的元信息（服务名、方法名、标签、额外数据），通过内置中间件 `callInfoCtxBindMw` 注入 context，后续中间件可通过 `GetCallInfoFromContext` 获取。
 
-详见 [[02-CallInfo与上下文]]。
+详见 [02-CallInfo与上下文](02-CallInfo与上下文.md)。
 
 ## 在 svcgen 中的使用模式
 
@@ -232,5 +232,5 @@ ag/ag_service/
 
 | 文档 | 内容 |
 |------|------|
-| [[01-Endpoint与中间件]] | 两套中间件体系、构建链流程、条件中间件、AgServiceProxyBase |
-| [[02-CallInfo与上下文]] | ServiceInfo、CallInfo 结构、Tag/Extra、上下文注入与提取 |
+| [01-Endpoint与中间件](01-Endpoint与中间件.md) | 两套中间件体系、构建链流程、条件中间件、AgServiceProxyBase |
+| [02-CallInfo与上下文](02-CallInfo与上下文.md) | ServiceInfo、CallInfo 结构、Tag/Extra、上下文注入与提取 |

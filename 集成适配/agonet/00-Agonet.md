@@ -53,7 +53,7 @@ agonet 包含多层的内存复用策略，贯穿整个数据路径：
 | **Goroutine 池** | `ants.Pool` — 256K 容量，非阻塞 | 数据读取 goroutine、异步任务提交 |
 | **弹性环形缓冲区** | `elastic.RingBuffer` — 懒初始化包装 | 自动管理环形缓冲区生命周期 |
 
-详见 [[06-内存管理与对象池]]。
+详见 [06-内存管理与对象池](06-内存管理与对象池.md)。
 
 ## 文件结构
 
@@ -113,10 +113,10 @@ pkg/                             ← 基础设施
 
 | 文档 | 内容 |
 |------|------|
-| [[01-核心事件循环框架]] | Engine、EventLoop、Conn 双缓冲、Server |
-| [[02-Simple管道层概述]] | 为什么需要Simple、三层桥接架构、与raw EventHandler对比 |
-| [[03-Pipeline与事件传播]] | 双向链表、handlerContext、6 种事件传播 |
-| [[04-客户端]] | 长连接(Simple优先)、短连接(SimpleShortClient)、纯Client作旁注 |
-| [[05-安全配置-TLS与TLCP]] | TLS/TLCP 双栈、证书加载 |
-| [[07-使用指南]] | 快速开始、配置示例、最佳实践 |
-| [[06-内存管理与对象池]] | 字节切片池、环形缓冲区池、goroutine 池 |
+| [01-核心事件循环框架](01-核心事件循环框架.md) | Engine、EventLoop、Conn 双缓冲、Server |
+| [02-Simple管道层概述](02-Simple管道层概述.md) | 为什么需要Simple、三层桥接架构、与raw EventHandler对比 |
+| [03-Pipeline与事件传播](03-Pipeline与事件传播.md) | 双向链表、handlerContext、6 种事件传播 |
+| [04-客户端](04-客户端.md) | 长连接(Simple优先)、短连接(SimpleShortClient)、纯Client作旁注 |
+| [05-安全配置-TLS与TLCP](05-安全配置-TLS与TLCP.md) | TLS/TLCP 双栈、证书加载 |
+| [07-使用指南](07-使用指南.md) | 快速开始、配置示例、最佳实践 |
+| [06-内存管理与对象池](06-内存管理与对象池.md) | 字节切片池、环形缓冲区池、goroutine 池 |

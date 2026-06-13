@@ -82,4 +82,4 @@ aggo proto -p all -m server -e ./idl/api ./idl/api/student/student.proto
 aggo proto -p go,api,server -e ./idl/api ./idl/api/student/student.proto
 ```
 
-> 详细文档见：[[../../代码生成/Protobuf生成流程/00-Protobuf生成|Protobuf 生成流程]]
+> 详细文档见：[Protobuf 生成流程](../../代码生成/Protobuf生成流程/00-Protobuf生成.md)

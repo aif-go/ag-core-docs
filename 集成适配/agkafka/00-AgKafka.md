@@ -56,6 +56,6 @@ sarama.Client ──► 生产者 / 消费者 / Admin 客户端
 
 | 文档 | 内容 |
 |------|------|
-| [[01-配置]] | Config 结构体、类型枚举、ToSaramaConfig 转换 |
-| [[02-FX集成]] | FX Module 装配 |
-| [[03-使用指南]] | **面向业务开发者：快速上手、配置、生产者/消费者、Consumer 生命周期集成、Multi-Handler 路由（routes 映射 + 集中校验）、最佳实践** |
+| [01-配置](01-配置.md) | Config 结构体、类型枚举、ToSaramaConfig 转换 |
+| [02-FX集成](02-FX集成.md) | FX Module 装配 |
+| [03-使用指南](03-使用指南.md) | **面向业务开发者：快速上手、配置、生产者/消费者、Consumer 生命周期集成、Multi-Handler 路由（routes 映射 + 集中校验）、最佳实践** |

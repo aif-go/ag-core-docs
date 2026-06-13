@@ -13,9 +13,9 @@ tags:
 
 | 工具                                     | 路径                       | 说明                       |
 | -------------------------------------- | ------------------------ | ------------------------ |
-| [[aggo/00-Aggo\|aggo]]                 | `tool/cmd/aggo/`         | 主入口 CLI，封装 proto 生成流程    |
-| [[gen-go-db/00-GenGoDb\\|gen-go-db]]    | `tool/cmd/gen-go-db/`    | Excel → 完整 CRUD + DAO 生成 [[gen-go-db/01-yaml命令\\|yaml]] · [[gen-go-db/02-db命令\\|db]] · [[gen-go-db/03-sheet命令\\|sheet]] |
-| [[protoc插件族/00-Protoc插件族\|protoc 插件]]  | `tool/cmd/protoc-gen-*/` | 6 个 protoc 插件            |
+| [aggo](aggo/00-Aggo.md)                 | `tool/cmd/aggo/`         | 主入口 CLI，封装 proto 生成流程    |
+| [gen-go-db](gen-go-db/00-GenGoDb.md)    | `tool/cmd/gen-go-db/`    | Excel → 完整 CRUD + DAO 生成 [yaml](gen-go-db/01-yaml命令.md) · [db](gen-go-db/02-db命令.md) · [sheet](gen-go-db/03-sheet命令.md) |
+| [protoc 插件](protoc插件族/00-Protoc插件族.md)  | `tool/cmd/protoc-gen-*/` | 6 个 protoc 插件            |
 
 ## 生成流水线
 

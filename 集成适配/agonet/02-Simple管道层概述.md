@@ -131,7 +131,7 @@ SimpleEventHandler.OnClose(conn, err)
 
 ## 第2层和第3层
 
-Pipeline 的内部结构和 Handler 类型体系在 [[03-Pipeline与事件传播]] 中详述。
+Pipeline 的内部结构和 Handler 类型体系在 [03-Pipeline与事件传播](03-Pipeline与事件传播.md) 中详述。
 
 ## 创建方式
 

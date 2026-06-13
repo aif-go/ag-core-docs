@@ -164,7 +164,7 @@ self_query_rules:
         - expr: NAME = @Name
 ```
 
-详细 YAML 格式说明见 [[03a-YAML定义格式详解|表 YAML 定义格式详解]]。
+详细 YAML 格式说明见 [表 YAML 定义格式详解](03a-YAML定义格式详解.md)。
 
 ## 内部解析实现
 

@@ -33,13 +33,13 @@ gormdb ─────────────► GORM v2 ──► 数据库 (M
 
 | 文档 | 内容 |
 |------|------|
-| [[01-事务传播]] | TransactionPropagation、TransactionManager、声明式事务中间件 |
-| [[02-gormdb]] | 数据库连接、Repository、日志适配、分页 |
-| [[03-命名SQL]] | 命名参数替换、模板 SQL、分页计算 |
-| [[04-WHERE条件构建器]] | WhereClauseBuilder 链式 API、FieldMask 动态过滤 |
-| [[05-FX集成]] | FX Module 装配与依赖注入 |
-|| [[06-使用指南]] | **面向业务开发者：快速上手、配置、最佳实践** |
-| [[07-生成DAO使用指南]] | **gen-go-db 生成的 DAO 接口使用详解** |
+| [01-事务传播](01-事务传播.md) | TransactionPropagation、TransactionManager、声明式事务中间件 |
+| [02-gormdb](02-gormdb.md) | 数据库连接、Repository、日志适配、分页 |
+| [03-命名SQL](03-命名SQL.md) | 命名参数替换、模板 SQL、分页计算 |
+| [04-WHERE条件构建器](04-WHERE条件构建器.md) | WhereClauseBuilder 链式 API、FieldMask 动态过滤 |
+| [05-FX集成](05-FX集成.md) | FX Module 装配与依赖注入 |
+|| [06-使用指南](06-使用指南.md) | **面向业务开发者：快速上手、配置、最佳实践** |
+| [07-生成DAO使用指南](07-生成DAO使用指南.md) | **gen-go-db 生成的 DAO 接口使用详解** |
 
 ## 架构分层
 

@@ -40,12 +40,12 @@ AgHertz 是 ag-core 对 Hertz HTTP 框架的适配层，提供**服务端**和**
 
 | 文档 | 内容 |
 |------|------|
-| [[01-服务端]] | AgHertzServer、ConfigSuite、ServerOption、路由、中间件 |
-| [[02-客户端]] | HertzClient、ClientSuite、优先级中间件、选项构建 |
-| [[03-服务注册与发现]] | Nacos 服务注册 + 服务发现 |
-| [[04-基础客户端与序列化]] | HertzBaseClient、Serializer、DoRequest |
-| [[05-FX集成]] | FX Module 装配与依赖注入 |
-| [[06-使用指南]] | **面向业务开发者：快速上手、配置、最佳实践** |
+| [01-服务端](01-服务端.md) | AgHertzServer、ConfigSuite、ServerOption、路由、中间件 |
+| [02-客户端](02-客户端.md) | HertzClient、ClientSuite、优先级中间件、选项构建 |
+| [03-服务注册与发现](03-服务注册与发现.md) | Nacos 服务注册 + 服务发现 |
+| [04-基础客户端与序列化](04-基础客户端与序列化.md) | HertzBaseClient、Serializer、DoRequest |
+| [05-FX集成](05-FX集成.md) | FX Module 装配与依赖注入 |
+| [06-使用指南](06-使用指南.md) | **面向业务开发者：快速上手、配置、最佳实践** |
 
 ## 架构分层
 

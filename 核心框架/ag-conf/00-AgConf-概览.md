@@ -26,16 +26,16 @@ AgConf 是 ag-core 的配置管理模块，**深度借鉴了 Spring Framework �
 
 | 文档                                                    | 说明                                   |
 | ----------------------------------------------------- | ------------------------------------ |
-| [[01-架构概览\|架构概览]]                                     | 整体架构、类层次、数据流                         |
-| [[02-PropertySource-属性源\|PropertySource 属性源]]         | 属性源体系、优先级、集合操作                       |
-| [[03-PropertyResolver-属性解析器\|PropertyResolver 属性解析器]] | 属性解析链路、占位符递归解析                       |
-| [[04-Environment-环境抽象\|Environment 环境抽象]]             | 环境接口、属性源 + 解析器的组合                    |
-| [[05-ConfigLoading-配置加载\|配置加载]]                       | 本地 YAML/JSON/Properties 文件加载         |
-| [[06-Bind-配置绑定\|配置绑定]]                                | Struct 反射绑定、`value`/`required` 标签    |
-| [[07-ConfigWatch-配置热更新\|配置热更新]]                       | Watcher 机制、变更通知、自动刷新                 |
-| [[08-Decrypt-配置解密\|配置解密]]                             | `{cipher}` 前缀加密值自动解密                 |
-| [[09-与Spring对比\|与 Spring 对比]]                         | AgConf vs Spring PropertySource 体系对比 |
-| [[10-使用指南\|📖 使用指南]]                                  | 面向业务开发者的纯实用教程                        |
+| [架构概览](01-架构概览.md)                                     | 整体架构、类层次、数据流                         |
+| [PropertySource 属性源](02-PropertySource-属性源.md)         | 属性源体系、优先级、集合操作                       |
+| [PropertyResolver 属性解析器](03-PropertyResolver-属性解析器.md) | 属性解析链路、占位符递归解析                       |
+| [Environment 环境抽象](04-Environment-环境抽象.md)             | 环境接口、属性源 + 解析器的组合                    |
+| [配置加载](05-ConfigLoading-配置加载.md)                       | 本地 YAML/JSON/Properties 文件加载         |
+| [配置绑定](06-Bind-配置绑定.md)                                | Struct 反射绑定、`value`/`required` 标签    |
+| [配置热更新](07-ConfigWatch-配置热更新.md)                       | Watcher 机制、变更通知、自动刷新                 |
+| [配置解密](08-Decrypt-配置解密.md)                             | `{cipher}` 前缀加密值自动解密                 |
+| [与 Spring 对比](09-与Spring对比.md)                         | AgConf vs Spring PropertySource 体系对比 |
+| [📖 使用指南](10-使用指南.md)                                  | 面向业务开发者的纯实用教程                        |
 
 ## 模块文件
 

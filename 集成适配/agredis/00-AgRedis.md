@@ -92,4 +92,4 @@ type AgRedisClient interface {
 | `universal` | `redis.UniversalClient` | 单机、集群、Sentinel 均由 go-redis 自动选择 |
 | `rw` | `RWClient` | 主从架构，写走主节点，读走随机的从节点 |
 
-详见 [[01-配置与客户端模式]]。
+详见 [01-配置与客户端模式](01-配置与客户端模式.md)。

@@ -27,7 +27,7 @@ ag/ag_common/
 
 | 子包 | 路径 | 文档 | 状态 |
 |------|------|------|------|
-| agmetadata | `ag/ag_common/agmetadata/` | [[01-AgMetadata\|上下文元数据]] | ✅ 已完成 |
+| agmetadata | `ag/ag_common/agmetadata/` | [上下文元数据](01-AgMetadata.md) | ✅ 已完成 |
 | — | — | — | 📝 待扩展 |
 
 ---

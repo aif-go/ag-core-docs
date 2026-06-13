@@ -284,13 +284,13 @@ func NewOrderBuilder() *OrderBuilder
 
 ## 7. 命名 SQL 支持 (`namingsql_support.go`)
 
-详见 [[03-命名SQL]]。
+详见 [03-命名SQL](03-命名SQL.md)。
 
 ---
 
 ## FX 依赖
 
-gormdb 子模块通过 `FxAicGromdbModule` 注册（[[05-FX集成]]）：
+gormdb 子模块通过 `FxAicGromdbModule` 注册（[05-FX集成](05-FX集成.md)）：
 
 ```go
 fx.Provide(

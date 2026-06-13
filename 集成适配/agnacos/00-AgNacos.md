@@ -89,6 +89,6 @@ nacos:
 
 | 文档 | 内容 |
 |------|------|
-| [[01-远程配置中心]] | DataID 加载、PropertySource 注入、配置变更监听 |
-| [[02-服务发现与注册]] | NamingClient 创建、消费方一览（agkitex / aghertz） |
-| [[03-使用指南]] | 配置、FX 模块注册、验证、FAQ |
+| [01-远程配置中心](01-远程配置中心.md) | DataID 加载、PropertySource 注入、配置变更监听 |
+| [02-服务发现与注册](02-服务发现与注册.md) | NamingClient 创建、消费方一览（agkitex / aghertz） |
+| [03-使用指南](03-使用指南.md) | 配置、FX 模块注册、验证、FAQ |

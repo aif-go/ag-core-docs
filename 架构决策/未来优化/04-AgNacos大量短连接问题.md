@@ -92,10 +92,10 @@ type PooledHttpAgent struct {
 }
 ```
 
-详细实现见 [[../技术评估/02-agnacos自定义HttpAgent方案|agnacos 自定义 HttpAgent 方案]]。
+详细实现见 [agnacos 自定义 HttpAgent 方案](../技术评估/02-agnacos自定义HttpAgent方案.md)。
 
 ### 推荐
 
 短期优先考虑方案 C（影响最小），长期推动升级到 v2.x。
 
-> 📐 升级评估详见 [[../技术评估/01-nacos-sdk-v2升级评估|nacos-sdk-go v2 升级影响评估]]
+> 📐 升级评估详见 [nacos-sdk-go v2 升级影响评估](../技术评估/01-nacos-sdk-v2升级评估.md)
