@@ -149,15 +149,54 @@ const (
 
 ## 初步结论
 
-**倾向方案 A**，理由：
+**采用方案 B 路线 + 新增 Random/RoundRobin**，具体：
 
-1. 枚举风格统一是长期收益：全小写的枚举在 YAML 配置中自然一致
-2. 大小写不敏感匹配彻底消除陷阱：无论用户写 `Manual`、`manual`、`MANUAL` 都能正确工作
-3. 改 error 而非静默降级：无效值尽早失败（fail fast），避免生产事故
-4. 仅改 `config.go` 中的几个 case + 一行常量值，不影响其他包
+1. **常量值不变**：`PartitionerTypeManual = "Manual"`，不改公开 API
+2. **大小写不敏感匹配**：所有 partitioner type 统一走 `strings.EqualFold`，`Manual` / `manual` / `MANUAL` 均可
+3. **新增两种分区器**：
+
+| 枚举常量 | YAML 值 | Sarama 构造函数 | 说明 |
+|---------|---------|----------------|------|
+| `PartitionerTypeHash` | `hash` | `NewHashPartitioner` | 按 key hash（默认） |
+| `PartitionerTypeManual` | `Manual` | `NewManualPartitioner` | 手动指定分区 |
+| `PartitionerTypeRandom` | `random` | `NewRandomPartitioner` | 随机分区 |
+| `PartitionerTypeRoundRobin` | `roundrobin` | `NewRoundRobinPartitioner` | 轮询分区 |
+
+4. **无效值改为 error**：不再静默降级，第一时间让用户知道配置错误
+
+### 改动范围
+
+只涉及 `config.go` 中的 `PartitionerType` 常量和 `ToSarama()` 方法，不影响其他包。
+
+### 最终代码示意
+
+```go
+type PartitionerType string
+
+const (
+    PartitionerTypeHash        PartitionerType = "hash"
+    PartitionerTypeManual      PartitionerType = "Manual"
+    PartitionerTypeRandom      PartitionerType = "random"
+    PartitionerTypeRoundRobin  PartitionerType = "roundrobin"
+)
+
+func (p PartitionerType) ToSarama() (sarama.PartitionerConstructor, error) {
+    switch strings.ToLower(string(p)) {
+    case "hash":
+        return sarama.NewHashPartitioner, nil
+    case "manual":
+        return sarama.NewManualPartitioner, nil
+    case "random":
+        return sarama.NewRandomPartitioner, nil
+    case "roundrobin":
+        return sarama.NewRoundRobinPartitioner, nil
+    default:
+        return nil, fmt.Errorf("agsarama: invalid partitioner type: %q (valid: hash, manual, random, roundrobin)", p)
+    }
+}
+```
 
 ## 待讨论
 
-- 是否需要同步更新文档中 `Manual` 的写法为 `manual`？
-- `PartitionerTypeManual` 这个 Go 常量名是否需要改成 `PartitionerTypeManual = "manual"`（值变但名不变，不影响 Go 代码引用）？
-- 存量配置中写 `Manual` 的需不需要做迁移通知或兼容期？
+- 文档中 `03-使用指南.md` 的表和示例中的 `Manual` 需要同步更新为小写示例 + 说明大小写不敏感？
+- 是否需要同时做这个优化？（和改代码一起提交，还是先记着？）
