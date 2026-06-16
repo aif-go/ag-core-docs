@@ -72,7 +72,7 @@ func (enc *Base64Encrypt) Decrypt(ciphertext string) (string, error) {
 实现 `ITextEncryptor` 接口，在应用启动时注册：
 
 ```go
-import "gitlab.allinfinance.com/aifgo/ag-core/ag/ag_crypto"
+import "github.com/aif-go/ag-core/ag/ag_crypto"
 
 type SM4Encryptor struct{}
 

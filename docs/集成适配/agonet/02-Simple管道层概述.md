@@ -137,8 +137,8 @@ Pipeline 的内部结构和 Handler 类型体系在 [03-Pipeline与事件传播]
 
 ```go
 import (
-    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet"
-    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet/simple"
+    "github.com/aif-go/ag-core/contribute/agonet"
+    "github.com/aif-go/ag-core/contribute/agonet/simple"
 )
 
 handler, _ := simple.NewSimpleEventHandlerWithOptions(

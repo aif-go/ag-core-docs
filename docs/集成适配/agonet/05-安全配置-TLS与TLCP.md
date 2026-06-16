@@ -150,7 +150,7 @@ config:
 
 ```go
 // client.go:133-152
-// import "gitlab.allinfinance.com/aifgo/ag-core/contribute/agonet"
+// import "github.com/aif-go/ag-core/contribute/agonet"
 
 switch cliTlsType {
 case TLSType_NONE:

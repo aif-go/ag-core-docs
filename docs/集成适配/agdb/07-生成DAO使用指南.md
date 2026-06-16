@@ -165,7 +165,7 @@ pageRes := result.(*model.StudentFindByAgeWithPagePageRes)
 适用于灵活多变的查询条件，无需为每个组合生成命名 SQL：
 
 ```go
-import "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/conditonwhere"
+import "github.com/aif-go/ag-core/contribute/agdb/conditonwhere"
 
 // 构建条件
 condition := conditonwhere.NewWhereClauseBuilder()
@@ -196,8 +196,8 @@ student, err := dao.FindFirstOneByCondition(ctx, condition, orderBuilder)
 
 ```go
 import (
-    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/gormdb"
-    "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/agdao"
+    "github.com/aif-go/ag-core/contribute/agdb/gormdb"
+    "github.com/aif-go/ag-core/contribute/agdb/agdao"
     "your-project/internal/repository/dao"
 )
 

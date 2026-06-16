@@ -203,8 +203,8 @@ func GetModelTemplate(tableData *table.TableData) string {
 ```go
 // template.go:24-57
 // 基础: "fmt"
-// HasPage → db "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/gormdb"
-// HasSelfQuery → "gitlab.allinfinance.com/aifgo/ag-core/contribute/agdb/conditonwhere"
+// HasPage → db "github.com/aif-go/ag-core/contribute/agdb/gormdb"
+// HasSelfQuery → "github.com/aif-go/ag-core/contribute/agdb/conditonwhere"
 // WhereDataToYAMLCache → "gopkg.in/yaml.v2"
 // time.Time 列 → "time"
 ```

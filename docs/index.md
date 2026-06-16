@@ -8,7 +8,7 @@ tags:
 # 📚 ag-core 文档索引
 
 > 企业级 Go 微服务框架 + 代码生成平台
-> 源码：`http://gitlab.allinfinance.com/aifgo/ag-core`
+> 源码：`http://github.com/aif-go/ag-core`
 
 ---
 
