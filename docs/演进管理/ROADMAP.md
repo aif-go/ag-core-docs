@@ -37,7 +37,8 @@ tags:
 |------|--------|---------|------|
 | App 生命周期钩子 | P1 | 中期 | [待办优化](待办优化/App生命周期钩子.md) |
 | AgCrypto 加密模块优化 | P2 | 中期 | [待办优化](待办优化/AgCrypto加密模块.md) |
-| AgNacos 大量短连接问题 | P2 | 远期 | [待办优化](待办优化/AgNacos大量短连接问题.md) |
+|| AgNacos 大量短连接问题 | P2 | 远期 | [待办优化](待办优化/AgNacos大量短连接问题.md) |
+|| AgSarama Partitioner 枚举 `Manual` 大小写不一致 | P1 | 近期 | [待办优化](待办优化/Agsarama%20Partitioner枚举风格.md) |
 
 ## 阻塞项
 
