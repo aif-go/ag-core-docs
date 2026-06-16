@@ -2,7 +2,6 @@
 tags:
   - ag-core
   - contribute
-  - agkafka
   - agsarama
   - kafka
   - architecture

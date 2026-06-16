@@ -37,7 +37,7 @@ tags:
 | [aghertz (Hertz)](集成适配/aghertz/00-AgHertz.md) | 字节跳动 Hertz 框架适配 ✅ |
 | [agkitex (Kitex)](集成适配/agkitex/00-AgKitex.md) | 字节跳动 Kitex RPC 适配 ✅ |
 | [agredis (Redis)](集成适配/agredis/00-AgRedis.md) | Redis 客户端封装 ✅ |
-| [agkafka (Sarama/Kafka)](集成适配/agkafka/00-AgKafka.md) | Kafka 消息队列 ✅ |
+| [agsarama (Sarama/Kafka)](集成适配/agsarama/00-Agsarama.md) | Kafka 消息队列 ✅ |
 | [agnacos (Nacos)](集成适配/agnacos/00-AgNacos.md) | Nacos 集成 ✅ (2篇) |
 | [agonet 网络层](集成适配/agonet/00-Agonet.md) | 网络通信抽象 ✅ (7篇) |
 
