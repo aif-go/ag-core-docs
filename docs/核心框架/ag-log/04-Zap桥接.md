@@ -27,6 +27,7 @@ tags:
 
 | 配置字段 | 类型 | 默认值 | 说明 |
 |----------|------|--------|------|
+| `local_time` | `bool` | `true` | 归档文件名是否使用本地时间（默认本地，`false`=UTC） |
 | `log_level` | `string` | `"info"` | 日志级别：debug/info/warn/error |
 | `log_file_name` | `string` | `""` | 日志文件路径（空 = 不写文件） |
 | `max_size` | `int` | `100` | 单个日志文件最大 MB |

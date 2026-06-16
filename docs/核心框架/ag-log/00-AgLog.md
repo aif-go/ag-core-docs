@@ -32,6 +32,7 @@ ag_log/
 │   ├── slog_handler.go             #   NamedHandler + HandlerFactory
 │   ├── slog_handler_replaceable.go #   ReplaceableHandler（热替换）
 │   ├── slog_wrap_config.go         #   Builder（构造器）~490行
+│   ├── agslog_level_mw.go             #   LevelMw：日志级别中间件（new in 746c275）
 │   ├── agslog_test.go              #   单元测试 + 基准测试
 │   └── zfx_agslog.go               #   FX Provide（agslog 模块）
 │
@@ -64,6 +65,7 @@ ag_log/
     ├── slog4zap_test.go
     ├── agslog_formatter_test.go
     ├── agslog.yaml                 # 集成测试配置文件
+    ├── agslog_levelmw.yaml         # 日志级别中间件测试配置
     ├── agslog_async.yaml           # 异步日志配置文件
     └── test.yaml                   # 传统日志配置文件
 ```
@@ -76,8 +78,8 @@ ag_log/
 | **Handler 命名** | `agslog` | `NamedHandler`：每个 handler 实例有唯一名称 | 无 |
 | **Handler 热替换** | `agslog` | `ReplaceableHandler`：运行时原子替换 handler | 无 |
 | **Handler 工厂** | `agslog` | `HandlerFactory`：延迟初始化 + 循环依赖检测 | 无 |
-| **中间件管道** | 第三方 | `slogmulti.Pipe`：日志预处理/过滤/增强 | `samber/slog-multi` |
-| **扇出路由** | `fanout` | 一条日志同时分发到多个 handler | `slog-multi` |
+| **中间件管道** | `agslog` | `LevelMw`：日志级别中间件，按 handler 名称精细控制 | 无 |
+| **Fanout 扇出** | `fanout` | 一条日志同时分发到多个 handler | `samber/slog-multi` |
 | **异步处理** | `async` | Worker 池 + 队列 + 三种满策略 | 无 |
 | **Zap 桥接** | `slogzap` | 将 Uber Zap 包装为 `slog.Handler` | `samber/slog-zap` |
 | **Zap 后端** | `logzap` | Zap 日志引擎 + 轮转归档 | `uber-go/zap`, `lumberjack` |
@@ -92,6 +94,7 @@ ag_log/
 | [04-Zap桥接](04-Zap桥接.md) | logzap + slogzap 桥接 |
 | [05-FX集成](05-FX集成.md) | FX Module 组装与配置绑定 |
 | [06-使用指南](06-使用指南.md) | **面向业务开发者：快速上手、配置、最佳实践** |
+| [07-日志级别中间件](07-日志级别中间件.md) | 按 handler 名称精细控制日志级别（new in 746c275） |
 
 ## 设计要点
 

@@ -9,7 +9,7 @@ tags:
 # agnacos 自定义 HttpAgent 方案
 
 > 记录日期：2026-06-10 | 状态：方案阶段
-> 关联：[AgNacos 大量短连接问题](../未来优化/04-AgNacos大量短连接问题.md)
+> 关联：[AgNacos 大量短连接问题](../待办优化/AgNacos大量短连接问题.md)
 
 ## 目标
 

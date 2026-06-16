@@ -24,7 +24,6 @@ tags:
 | [AgConf 配置管理](核心框架/ag-conf/00-AgConf-概览.md)     | 多属性源、占位符解析、绑定、热更新、解密 |                                  |
 | [AgServer 服务端抽象](核心框架/ag-server/00-AgServer.md) | Gin/Hertz/Kitex 统一抽象 |                                  |
 | [AgService 调用链框架](核心框架/ag-service/00-AgService.md) | Endpoint 中间件 + CallInfo 上下文 (3篇) |                                  |
-| [AgError 错误处理](核心框架/ag-error/00-AgError.md)     | 业务错误码体系              |                                  |
 | [AgCrypto 加密模块](核心框架/ag-crypto/00-AgCrypto.md)  | 加解密工具                |                                  |
 | [AgCommon 公共工具](核心框架/ag-common/00-AgCommon.md)  | 通用工具函数               |                                  |
 | [AgExt 扩展机制](核心框架/ag-ext/00-AgExt.md)           | 可插拔扩展点               |                                  |
@@ -58,13 +57,15 @@ tags:
 | [YAML → DAO](代码生成/YAML到DAO代码/00-YAML到DAO.md)       | 生成 Go ORM 模型 + CRUD     |
 | [Protobuf 生成](代码生成/Protobuf生成流程/00-Protobuf生成.md)  | proto → API/服务端/客户端代码 ✅ |
 
-## 📐 [架构决策记录 (ADR)](架构决策/00-架构决策.md)
+## 📐 [演进管理 — 技术评估 / 待办优化 / 变更记录](演进管理/00-概述与流程.md)
 
-重要技术选型与设计决策的记录。
+框架演进相关的技术评估、待办优化提案、已完成变更归档。
 
-### 🔭 [未来优化：App 生命周期钩子](架构决策/未来优化/01-App生命周期钩子.md)
-
-App 生命周期分阶段优化讨论（init → start → ready → stop → cleanup）。
+| 维度 | 内容 |
+|------|------|
+| 🗺️ [演进路线图 (ROADMAP)](演进管理/ROADMAP.md) | 近期/中期/远期优先级排期 |
+| 🔭 [待办优化](演进管理/待办优化/App生命周期钩子.md) | 待解决的问题提案 |
+| ✅ [变更记录](演进管理/变更记录/Log归档LocalTime.md) | 已实现的变更归档 |
 
 ## 🧪 [开发指南](开发指南/00-开发指南.md)
 

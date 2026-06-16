@@ -11,11 +11,9 @@ tags:
 # nacos-sdk-go v2 升级影响评估
 
 > 记录日期：2026-06-10 | 状态：评估中
-> 关联：[AgNacos 大量短连接问题](../未来优化/04-AgNacos大量短连接问题.md)
+> 关联：[AgNacos 大量短连接问题](../待办优化/AgNacos大量短连接问题.md)
 
-## 背景
-
-当前 ag-core 依赖 `nacos-sdk-go v1.1.5`，存在大量短连接问题（见 [04-AgNacos大量短连接问题](../未来优化/04-AgNacos大量短连接问题.md)）。升级到 v2 可从根本上解决——v2 的 naming client 采用 gRPC（HTTP/2）替代 HTTP，天然支持多路复用长连接。
+当前 ag-core 依赖 `nacos-sdk-go v1.1.5`，存在大量短连接问题（见 [AgNacos大量短连接问题](../待办优化/AgNacos大量短连接问题.md)）。升级到 v2 可从根本上解决——v2 的 naming client 采用 gRPC（HTTP/2）替代 HTTP，天然支持多路复用长连接。
 
 ## v2 核心变化
 

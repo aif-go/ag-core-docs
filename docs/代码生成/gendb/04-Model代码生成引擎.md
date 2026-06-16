@@ -105,7 +105,7 @@ column:{Name};[primaryKey];[not null];[AUTOCREATETIME];[AUTOUPDATETIME];[index:{
 
 ### WHERE 条件解析
 
-YAML 中的 WHERE 条件通过 `conditonwhere.ParseWhereCondition()` 解析（与 Excel 解析器共享 `agdb/conditonwhere` 包），然后通过 `extractWhereFields()` 递归提取所有列名和操作符：
+YAML 中的 WHERE 条件通过 `conditonwhere.ParseWhereCondition()` 解析（从 `contribute/agdb/conditonwhere` 搬入的自包含包 `tool/cmd/gen-go-db/conditonwhere/`），然后通过 `extractWhereFields()` 递归提取所有列名和操作符：
 
 ```go
 // model/parser.go:371-386
