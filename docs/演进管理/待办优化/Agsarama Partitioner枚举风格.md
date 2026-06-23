@@ -9,7 +9,7 @@ tags:
 
 # AgSarama Partitioner 枚举风格 — `Manual` 大小写不一致
 
-> 讨论日期：2026-06-16 | 状态：待讨论
+> 讨论日期：2026-06-16 | 状态：已实施（commit `55b9042`）
 
 ## 问题
 
@@ -201,7 +201,13 @@ func (p PartitionerType) ToSarama() (sarama.PartitionerConstructor, error) {
 }
 ```
 
-## 待讨论
+## 实施记录
 
-- 文档中 `03-使用指南.md` 的表和示例中的 `Manual` 需要同步更新为小写示例 + 说明大小写不敏感？
-- 是否需要同时做这个优化？（和改代码一起提交，还是先记着？）
+- **commit**: `55b9042`（ag-core-aifgo）
+- **改动内容**：
+  - `PartitionerTypeManual` 值 `"Manual"` → `"manual"`
+  - `ToSarama()` 改用 `strings.ToLower` 大小写不敏感匹配
+  - 新增 `PartitionerTypeRandom` / `PartitionerTypeRoundRobin`
+  - `default` 分支返回 `fmt.Errorf(...)` 报错
+  - `NewDefaultConfig()` 显式设置 `c.Producer.Partitioner = PartitionerTypeHash`
+- **文档同步**：`01-配置.md`、`03-使用指南.md` 已同步更新

@@ -1,6 +1,6 @@
 ---
 title: ag-core 演进路线图
-last_updated: 2026-06-16
+last_updated: 2026-06-23
 tags:
   - ag-core
   - roadmap
@@ -21,6 +21,7 @@ tags:
 | gen-go-db conditonwhere 自包含 | ✅ 已完成 | — | commit b769cca |
 | svcgen proxy CallName 修复 | ✅ 已完成 | — | commit 8aca685 |
 | 文档体系整理 | ✅ 已完成 | — | 演进管理目录重组 |
+| AgSarama Partitioner 枚举统一 + 新增 Random/RoundRobin | ✅ 已完成 | — | commit 55b9042 |
 
 ## 中期
 
@@ -37,8 +38,7 @@ tags:
 |------|--------|---------|------|
 | App 生命周期钩子 | P1 | 中期 | [待办优化](待办优化/App生命周期钩子.md) |
 | AgCrypto 加密模块优化 | P2 | 中期 | [待办优化](待办优化/AgCrypto加密模块.md) |
-|| AgNacos 大量短连接问题 | P2 | 远期 | [待办优化](待办优化/AgNacos大量短连接问题.md) |
-|| AgSarama Partitioner 枚举 `Manual` 大小写不一致 | P1 | 近期 | [待办优化](待办优化/Agsarama%20Partitioner枚举风格.md) |
+| AgNacos 大量短连接问题 | P2 | 远期 | [待办优化](待办优化/AgNacos大量短连接问题.md) |
 
 ## 阻塞项
 
