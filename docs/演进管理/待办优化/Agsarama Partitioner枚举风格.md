@@ -147,26 +147,31 @@ const (
 | 改动范围 | 常量 + 函数 | 仅函数 | 常量 + 函数 |
 | 推荐度 | ⭐ 推荐 | ⭐ 最小改动可选 | ❌ 不推荐 |
 
-## 初步结论
+## 初步结论（2026-06-17 更新）
 
-**采用方案 B 路线 + 新增 Random/RoundRobin**，具体：
+**采用方案 A 路线（统一全小写 + 大小写不敏感匹配 + 新增 Random/RoundRobin）**，具体：
 
-1. **常量值不变**：`PartitionerTypeManual = "Manual"`，不改公开 API
-2. **大小写不敏感匹配**：所有 partitioner type 统一走 `strings.EqualFold`，`Manual` / `manual` / `MANUAL` 均可
+1. **常量值改为全小写**：`PartitionerTypeManual = "manual"`，统一枚举风格
+2. **大小写不敏感匹配**：所有 partitioner type 统一走 `strings.ToLower` 归一化后匹配，存量 `Manual` / `MANUAL` 等写法依然兼容
 3. **新增两种分区器**：
 
 | 枚举常量 | YAML 值 | Sarama 构造函数 | 说明 |
 |---------|---------|----------------|------|
 | `PartitionerTypeHash` | `hash` | `NewHashPartitioner` | 按 key hash（默认） |
-| `PartitionerTypeManual` | `Manual` | `NewManualPartitioner` | 手动指定分区 |
+| `PartitionerTypeManual` | `manual` | `NewManualPartitioner` | 手动指定分区 |
 | `PartitionerTypeRandom` | `random` | `NewRandomPartitioner` | 随机分区 |
 | `PartitionerTypeRoundRobin` | `roundrobin` | `NewRoundRobinPartitioner` | 轮询分区 |
 
 4. **无效值改为 error**：不再静默降级，第一时间让用户知道配置错误
 
+> ⚠️ 存量配置中写 `Manual`（大写）依然可用，大小写不敏感匹配保证兼容性。
+
 ### 改动范围
 
-只涉及 `config.go` 中的 `PartitionerType` 常量和 `ToSarama()` 方法，不影响其他包。
+- `PartitionerTypeManual` 常量值从 `"Manual"` → `"manual"`
+- `ToSarama()` 改用 `strings.ToLower(string(p))` 做 switch，兼容存量大小写
+- 新增 `PartitionerTypeRandom` / `PartitionerTypeRoundRobin`
+- `default` 分支返回 `fmt.Errorf(...)` 而非静默降级
 
 ### 最终代码示意
 
@@ -175,7 +180,7 @@ type PartitionerType string
 
 const (
     PartitionerTypeHash        PartitionerType = "hash"
-    PartitionerTypeManual      PartitionerType = "Manual"
+    PartitionerTypeManual      PartitionerType = "manual"     // ← 已改为全小写
     PartitionerTypeRandom      PartitionerType = "random"
     PartitionerTypeRoundRobin  PartitionerType = "roundrobin"
 )
