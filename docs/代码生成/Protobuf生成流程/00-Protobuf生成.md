@@ -13,6 +13,7 @@ tags:
 > 路径：`tool/cmd/aggo/internal/cmd_proto/` + `tool/cmd/protoc-gen-go-*/` + `tool/aggen/` | 从 `.proto` 到全套微服务代码
 
 关于代码生成的架构设计、proto 解析、类型系统和模板渲染，详见：[01-代码生成引擎架构](01-代码生成引擎架构.md)。
+关于 proto 文件编写规范、`google.api.http` 注解用法、查询参数映射规则，详见：[02-ProtoIDL规范](02-ProtoIDL规范.md)。
 
 ## 概述
 
