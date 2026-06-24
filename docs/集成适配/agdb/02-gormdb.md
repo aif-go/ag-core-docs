@@ -79,6 +79,35 @@ func init() {
 
 驱动注册是 **并发安全** 的（`sync.RWMutex`），支持扩展自定义驱动。
 
+> ⚠️ 仅 `NewDB_V2` 使用 registry 机制。旧版 `NewDB` 使用 hardcoded switch，**不支持**扩展驱动。
+
+### 扩展自定义驱动
+
+以 SQLite 为例，在项目 `init()` 或 `main()` 启动阶段注册：
+
+```go
+import (
+    "github.com/aif-go/ag-core/contribute/agdb/gormdb"
+    "gorm.io/driver/sqlite"
+)
+
+func init() {
+    _ = gormdb.RegisterDBOpener("sqlite", sqlite.Open)
+}
+```
+
+然后在 YAML 中使用：
+
+```yaml
+data:
+  db:
+    user:
+      driver: sqlite
+      dsn: test.db     # 文件路径，或 ":memory:" 纯内存模式
+```
+
+任何实现了 `gorm.Dialector` 接口的 GORM 驱动均可通过此方式注册。
+
 ---
 
 ## 2. 配置 (`config.go`)
